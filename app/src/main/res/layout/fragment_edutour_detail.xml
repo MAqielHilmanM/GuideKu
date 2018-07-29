@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.edutour.detail.EdutourDetailFragment">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -97,9 +98,13 @@
                 android:text="More On Lembang"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
+
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="96dp"></android.support.v7.widget.RecyclerView>
+                android:layout_height="144dp"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:listitem="@layout/row_edutour_detail"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
         </LinearLayout>
