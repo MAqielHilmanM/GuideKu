@@ -12,4 +12,15 @@
         lorem ipsum sim dolor amet lorem ipsum sim dolor amet lorem ipsum sim dolor ametlorem ipsum sim dolor amet
         lorem ipsum sim dolor ametlorem ipsum sim dolor amet
     </string>
+    <string name="stringEmptyFavorite">
+        Whoops, your favorites still empty Start exploring!
+    </string>
+    <string name="stringEmptyHistory">
+        Whoops, you havent start your trip yet Start exploring!
+    </string>
+    <string name="stringEmptyChat">
+        Whoops, you havent start a
+        conversation yet
+        Start exploring!
+    </string>
 </resources>

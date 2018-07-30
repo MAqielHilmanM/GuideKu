@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".screen.login.LoginActivity" />
-        <activity android:name=".screen.register.RegisterActivity" />
+        <activity android:name=".screen.register.RegisterActivity" android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity android:name=".screen.profile.ProfileActivity" />
-        <activity android:name=".screen.main.MainActivity"></activity>
+        <activity android:name=".screen.main.MainActivity" />
+        <activity android:name=".screen.chat.detail.ChatDetailActivity"></activity>
     </application>
 
 </manifest>

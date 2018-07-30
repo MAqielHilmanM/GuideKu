@@ -4,4 +4,12 @@
     <color name="colorPrimaryDark">#517309</color>
     <color name="colorAccent">#3BB2BF</color>
     <color name="colorEditText">#F0E876</color>
+    <color name="colorBackground">#E0E0E0</color>
+    <color name="colorCardHighlight">#7DA016</color>
+    <color name="colorGradientStart">#517309</color>
+    <color name="colorGradientCenter">#81517309</color>
+    <color name="colorGradientEnd">#1e517309</color>
+    <color name="colorIndicator">#3BB2BF</color>
+    <color name="colorHint">#808080</color>
+    <color name="colorSubtitle">#333333</color>
 </resources>

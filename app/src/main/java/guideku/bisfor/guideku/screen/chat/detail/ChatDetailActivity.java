@@ -1,0 +1,15 @@
+package guideku.bisfor.guideku.screen.chat.detail;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import guideku.bisfor.guideku.R;
+
+public class ChatDetailActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat_detail);
+    }
+}
