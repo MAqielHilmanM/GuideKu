@@ -1,4 +1,4 @@
 # GuideKu
+[On Going]
 Motion Laboratory Internship Project
 
-[On Going Progress]
