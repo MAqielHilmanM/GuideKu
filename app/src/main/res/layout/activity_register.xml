@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".screen.register.RegisterActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,19 +40,23 @@
         <EditText
             android:id="@+id/etRegisterFName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorEditText"
             android:hint="First Name"
+            android:maxLines="1"
+            android:inputType="textPersonName"
             android:padding="8dp" />
         <EditText
             android:id="@+id/etRegisterLName"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="8dp"
             android:background="@color/colorEditText"
             android:hint="Last Name"
+            android:maxLines="1"
+            android:inputType="textPersonName"
             android:padding="8dp" />
     </LinearLayout>
     <EditText
@@ -59,6 +65,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorEditText"
         android:hint="Username"
+        android:maxLines="1"
+        android:inputType="text"
         android:layout_marginTop="8dp"
         android:padding="8dp" />
     <EditText
@@ -67,6 +75,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorEditText"
         android:hint="Email"
+        android:maxLines="1"
+        android:inputType="textEmailAddress"
         android:layout_marginTop="8dp"
         android:padding="8dp" />
     <EditText
@@ -75,6 +85,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorEditText"
         android:hint="Password"
+        android:maxLines="1"
+        android:inputType="textPassword"
         android:layout_marginTop="8dp"
         android:padding="8dp" />
 

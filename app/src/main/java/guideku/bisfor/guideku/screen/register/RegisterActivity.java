@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         tvRegisterLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginActivity.startActivity(context);
+                finish();
             }
         });
     }

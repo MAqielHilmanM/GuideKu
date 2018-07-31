@@ -7,17 +7,20 @@
     android:background="@color/colorPrimary"
     tools:context=".screen.login.LoginActivity"
     android:orientation="vertical">
-    <ScrollView
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="32dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <ImageView
@@ -41,6 +44,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/colorEditText"
                 android:hint="email / username"
+                android:inputType="text"
                 android:padding="8dp" />
 
             <EditText
@@ -51,6 +55,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/colorEditText"
                 android:hint="password"
+                android:inputType="textPassword"
                 android:padding="8dp" />
 
             <Button
@@ -74,7 +79,8 @@
                 android:layout_height="match_parent"
                 android:background="#F34A38"
                 android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_google"
+                android:drawableStart="@drawable/ic_google"
+                android:paddingLeft="8dp"
                 android:text="Login With Google" />
 
             <LinearLayout
@@ -101,6 +107,6 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
