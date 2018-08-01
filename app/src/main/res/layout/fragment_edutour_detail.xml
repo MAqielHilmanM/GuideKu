@@ -16,10 +16,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/ivEdutourDetailImage"
                     android:layout_width="match_parent"
                     android:layout_height="256dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/pic_mountain2"/>
                 <TextView
+                    android:id="@+id/tvEdutourDetailName"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:textSize="16sp"
@@ -34,6 +37,7 @@
             android:orientation="vertical"
             android:layout_margin="16dp">
             <TextView
+                android:id="@+id/tvEdutourDetailTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -42,6 +46,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tvEdutourDetailDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
@@ -50,6 +55,7 @@
                 android:textSize="12sp"/>
 
             <TextView
+                android:id="@+id/tvEdutourDetailMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimaryDark"
@@ -84,6 +90,7 @@
                             android:textStyle="bold"
                             android:textColor="#517309"/>
                         <TextView
+                            android:id="@+id/tvEdutourDetailFunFact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Very fun place to have fun, makanya jadi fun fact"
@@ -100,11 +107,12 @@
                 android:textStyle="bold"/>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvEdutourDetail"
                 android:layout_width="match_parent"
                 android:layout_height="144dp"
                 android:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                tools:listitem="@layout/row_edutour_detail"></android.support.v7.widget.RecyclerView>
+                tools:listitem="@layout/row_edutour_detail"/>
         </LinearLayout>
 
         </LinearLayout>

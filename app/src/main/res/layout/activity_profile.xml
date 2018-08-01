@@ -14,9 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:id="@+id/tvProfileSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
+                android:padding="8dp"
                 android:layout_gravity="center_vertical|end"/>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
@@ -34,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Name">
                     <EditText
+                        android:id="@+id/etProfileName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"/>
@@ -43,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Email">
                     <EditText
+                        android:id="@+id/etProfileEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"/>
@@ -52,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:hint="PhoneNumber">
                     <EditText
+                        android:id="@+id/etProfilePhoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"/>

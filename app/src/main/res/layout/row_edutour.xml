@@ -9,12 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="128dp">
         <ImageView
+            android:id="@+id/ivRowEdutourImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/pic_mountain1"/>
     </RelativeLayout>
     <TextView
+        android:id="@+id/tvRowEdutourCategory"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +25,7 @@
         android:layout_marginTop="8dp"
         />
     <TextView
+        android:id="@+id/tvRowEdutourDescription"
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,6 +34,7 @@
         android:layout_marginTop="8dp"
         />
     <TextView
+        android:id="@+id/tvRowEdutourLocation"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

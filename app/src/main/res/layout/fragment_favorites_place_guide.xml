@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.favorites.place.FavoritesPlaceGuide">
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvFavPlace"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
@@ -13,6 +14,7 @@
         tools:listitem="@layout/row_edutour">
     </android.support.v7.widget.RecyclerView>
     <LinearLayout
+        android:id="@+id/layoutFavPlace"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"

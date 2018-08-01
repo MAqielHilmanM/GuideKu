@@ -3,6 +3,7 @@ package guideku.bisfor.guideku.screen.main;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -25,6 +26,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         holder.tvRowMaintitle.setText(lists.get(position).title);
+        holder.ivRowMainImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
     }
 
     @Override

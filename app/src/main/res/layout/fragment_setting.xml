@@ -39,6 +39,7 @@
                 android:layout_below="@id/tvSettingEmail"
                 android:textColor="@color/colorSubtitle"/>
             <Button
+                android:id="@+id/btnSettingEditProfile"
                 android:layout_width="86dp"
                 android:layout_height="24dp"
                 android:text="Edit Profile"
@@ -49,6 +50,7 @@
         </RelativeLayout>
     </android.support.v7.widget.CardView>
         <Button
+            android:id="@+id/btnSettingLogout"
             android:layout_width="match_parent"
             android:layout_marginTop="16dp"
             android:layout_height="wrap_content"

@@ -5,5 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">#fff</item>
     </style>
-
+    
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>

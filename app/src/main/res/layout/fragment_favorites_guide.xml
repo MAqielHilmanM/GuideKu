@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.favorites.guide.FavoritesGuideFragment">
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvFavGuide"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="android.support.v7.widget.GridLayoutManager"
@@ -14,6 +15,7 @@
 
         </android.support.v7.widget.RecyclerView>
         <LinearLayout
+            android:id="@+id/layoutFavGuide"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"

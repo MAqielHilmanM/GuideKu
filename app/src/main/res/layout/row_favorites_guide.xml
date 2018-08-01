@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
+            android:id="@+id/ivRowFavGuide"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:src="@drawable/pic_woman"
@@ -23,14 +24,19 @@
             android:orientation="vertical"
             android:layout_alignParentBottom="true">
             <TextView
+                android:id="@+id/tvRowFavGuideName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Neneng"
+                android:textStyle="bold"
+                android:textSize="16sp"
                 android:padding="8dp"/>
             <TextView
+                android:id="@+id/tvRowFavGuideLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Maribaya Trip"
+                android:textSize="14sp"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="8dp"

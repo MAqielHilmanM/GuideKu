@@ -44,11 +44,11 @@ public class MainFragment extends Fragment {
         rvMain.setAdapter(adapter);
         rvMain.setLayoutManager(layoutManager);
 
-        lists.add(new MainDao("1","1","1"));
-        lists.add(new MainDao("2","2","2"));
-        lists.add(new MainDao("3","3","3"));
-        lists.add(new MainDao("4","4","4"));
-        lists.add(new MainDao("5","5","5"));
+        lists.add(new MainDao("1","1","Mountain Alven"));
+        lists.add(new MainDao("2","2","Mountain Alven"));
+        lists.add(new MainDao("3","3","Mountain Alven"));
+        lists.add(new MainDao("4","4","Mountain Alven"));
+        lists.add(new MainDao("5","5","Mountain Alven"));
         adapter.notifyDataSetChanged();
 
         return v;
