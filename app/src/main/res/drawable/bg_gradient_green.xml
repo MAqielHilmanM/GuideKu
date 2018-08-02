@@ -4,5 +4,5 @@
         android:centerColor="@color/colorGradientCenter"
         android:endColor="@color/colorGradientEnd"
         android:startColor="@color/colorGradientStart"
-        android:type="linear" />
+        android:category="linear" />
 </shape>

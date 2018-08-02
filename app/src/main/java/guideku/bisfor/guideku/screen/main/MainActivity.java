@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     FloatingActionButton floatingActionButton;
     Context context;
+    static FragmentManager manager;
     public static final String EXTRA_ID = "EXTRA_ID";
 
     @Override
@@ -57,13 +58,14 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.bnvMain);
         floatingActionButton = findViewById(R.id.fabMain);
         context = this;
+        manager = getSupportFragmentManager();
 
         changeFragment(new MainFragment());
     }
 
-    public void changeFragment(Fragment fragment){
-        FragmentTransaction manager = getSupportFragmentManager().beginTransaction();
-        manager.replace(R.id.mainFrame,fragment).commit();
+    public static void changeFragment(Fragment fragment){
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.mainFrame,fragment).commit();
     }
 
     public static void startActivity(Context context, String id){

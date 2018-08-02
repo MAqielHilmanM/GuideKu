@@ -19,14 +19,14 @@
                 android:id="@+id/tvSettingName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="JohnDoe"
+                android:text="JohnDoe"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/tvSettingEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="JohnDoe@john.doe"
+                android:text="JohnDoe@john.doe"
                 android:textSize="12sp"
                 android:layout_below="@id/tvSettingName"
                 android:textColor="@color/colorSubtitle"/>
@@ -34,7 +34,7 @@
                 android:id="@+id/tvSettingPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="081234567890"
+                android:text="081234567890"
                 android:textSize="12sp"
                 android:layout_below="@id/tvSettingEmail"
                 android:textColor="@color/colorSubtitle"/>
