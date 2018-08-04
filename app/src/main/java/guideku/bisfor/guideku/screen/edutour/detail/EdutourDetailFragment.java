@@ -45,10 +45,10 @@ public class EdutourDetailFragment extends Fragment {
     }
 
     private void initDummy() {
-        list.add(new EdutourDetailDao(""));
-        list.add(new EdutourDetailDao(""));
-        list.add(new EdutourDetailDao(""));
-        list.add(new EdutourDetailDao(""));
+        list.add(new EdutourDetailDao("",""));
+        list.add(new EdutourDetailDao("",""));
+        list.add(new EdutourDetailDao("",""));
+        list.add(new EdutourDetailDao("",""));
         adapter.notifyDataSetChanged();
     }
 

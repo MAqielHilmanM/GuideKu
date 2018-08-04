@@ -10,6 +10,7 @@ import java.util.List;
 
 import guideku.bisfor.guideku.R;
 import guideku.bisfor.guideku.screen.edutour.detail.EdutourDetailFragment;
+import guideku.bisfor.guideku.screen.favorites.place.FavoritesPlaceDao;
 import guideku.bisfor.guideku.screen.main.MainActivity;
 
 public class EdutourListAdapter<T> extends RecyclerView.Adapter<EdutourListViewHolder> {
@@ -32,6 +33,16 @@ public class EdutourListAdapter<T> extends RecyclerView.Adapter<EdutourListViewH
             holder.tvRowEdutourLocation.setText(((EdutourListDao) list.get(position)).location);
             holder.tvRowEdutourCategory.setText(((EdutourListDao) list.get(position)).getCategory());
             holder.tvRowEdutourDescription.setText(((EdutourListDao) list.get(position)).description);
+            holder.layoutRowEdutour.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    MainActivity.changeFragment(new EdutourDetailFragment());
+                }
+            });
+        }else if(list.get(position) instanceof FavoritesPlaceDao) {
+            holder.tvRowEdutourCategory.setVisibility(View.GONE);
+            holder.tvRowEdutourDescription.setText(((FavoritesPlaceDao) list.get(position)).title);
+            holder.tvRowEdutourLocation.setText(((FavoritesPlaceDao) list.get(position)).location);
             holder.layoutRowEdutour.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
