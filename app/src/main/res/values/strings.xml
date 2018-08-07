@@ -23,4 +23,11 @@
         conversation yet
         Start exploring!
     </string>
+    <string name="googleAppAuthClientId">
+        480474110517-huok5n57v9sf3ptm01flmv99md42hs04.apps.googleusercontent.com
+    </string>
+    <string name="googleWebAuthClientId">
+        480474110517-mb3tg4g98o0jmqjama7ir1depjq26hg8.apps.googleusercontent.com
+    </string>
+
 </resources>

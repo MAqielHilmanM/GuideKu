@@ -1,12 +1,15 @@
 package guideku.bisfor.guideku.screen.setting;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import guideku.bisfor.guideku.R;
 import guideku.bisfor.guideku.screen.login.LoginActivity;
@@ -17,7 +20,8 @@ import guideku.bisfor.guideku.screen.profile.ProfileActivity;
  */
 public class SettingFragment extends Fragment {
     Button btnSettingLogout,btnSettingEdit;
-
+    private FirebaseAuth mAuth;
+    private Context mContext;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -48,6 +52,7 @@ public class SettingFragment extends Fragment {
         btnSettingLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mAuth.signOut();
                 LoginActivity.startActivity(getContext());
             }
         });
@@ -56,6 +61,8 @@ public class SettingFragment extends Fragment {
     private void initObject(View v) {
         btnSettingEdit = v.findViewById(R.id.btnSettingEditProfile);
         btnSettingLogout = v.findViewById(R.id.btnSettingLogout);
+        mAuth = FirebaseAuth.getInstance();
+        mContext = getContext();
     }
 
 }

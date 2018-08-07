@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="guideku.bisfor.guideku">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +21,7 @@
         <activity android:name=".screen.register.RegisterActivity" android:theme="@style/AppTheme.Dialog" />
         <activity android:name=".screen.profile.ProfileActivity" />
         <activity android:name=".screen.main.MainActivity"  />
-        <activity android:name=".screen.chat.detail.ChatDetailActivity"></activity>
+        <activity android:name=".screen.chat.detail.ChatDetailActivity"/>
     </application>
 
 </manifest>

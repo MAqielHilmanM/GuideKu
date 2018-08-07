@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "480474110517",
+    "firebase_url": "https://guideku-apps.firebaseio.com",
+    "project_id": "guideku-apps",
+    "storage_bucket": "guideku-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480474110517:android:670b2bac76e326e9",
+        "android_client_info": {
+          "package_name": "guideku.bisfor.guideku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480474110517-huok5n57v9sf3ptm01flmv99md42hs04.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "guideku.bisfor.guideku",
+            "certificate_hash": "6f7971c6e3b9e3a13342729b11ac44a69b81194d"
+          }
+        },
+        {
+          "client_id": "480474110517-mb3tg4g98o0jmqjama7ir1depjq26hg8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyzIeERzizlvvqVux5BnK_7B-QihGhnVE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480474110517-mb3tg4g98o0jmqjama7ir1depjq26hg8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
