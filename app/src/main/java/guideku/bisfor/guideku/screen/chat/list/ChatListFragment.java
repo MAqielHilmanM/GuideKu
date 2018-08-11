@@ -10,10 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import guideku.bisfor.guideku.R;
+import guideku.bisfor.guideku.api.BaseFirebase;
+import guideku.bisfor.guideku.api.model.ChatModel;
+import guideku.bisfor.guideku.api.model.UserModel;
+import guideku.bisfor.guideku.screen.main.MainActivity;
 
 public class ChatListFragment extends Fragment {
     Context context;
@@ -22,6 +32,10 @@ public class ChatListFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     List<ChatListDao> lists;
     LinearLayout layoutChatEmpty;
+
+    String uId;
+    int n;
+    public static final String TAG = "ChatListFrag";
 
     public ChatListFragment() {
         // Required empty public constructor
@@ -37,15 +51,17 @@ public class ChatListFragment extends Fragment {
 
         initDummy();
 
+        callData(uId);
+
         checkListData();
 
         return v;
     }
 
     private void checkListData() {
-        if(lists.isEmpty()){
+        if (lists.isEmpty()) {
             layoutChatEmpty.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             layoutChatEmpty.setVisibility(View.GONE);
         }
     }
@@ -67,11 +83,37 @@ public class ChatListFragment extends Fragment {
         context = getContext();
         rvChatList.setAdapter(adapter);
         rvChatList.setLayoutManager(layoutManager);
+        assert getArguments() != null;
+        uId = getArguments().getString(MainActivity.EXTRA_ID);
+    }
+
+
+    private void callData(String uId) {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection(BaseFirebase.KEY_CHAT).whereEqualTo(BaseFirebase.KEY_CHAT_USER, uId).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<ChatModel> models = queryDocumentSnapshots.toObjects(ChatModel.class);
+                for (ChatModel item: models
+                     ) {
+                    callUser(item);
+                }
+            }
+        });
 
 
     }
 
+    private void callUser(ChatModel model) {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        DocumentReference documentReference = firebaseFirestore.collection(BaseFirebase.KEY_USER).document(model.getGuide());
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                UserModel userModel = documentSnapshot.toObject(UserModel.class);
 
-
+            }
+        });
+    }
 
 }

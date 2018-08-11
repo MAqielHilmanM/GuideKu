@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import guideku.bisfor.guideku.R;
+import guideku.bisfor.guideku.screen.edutour.detail.EdutourDetailFragment;
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     List<MainDao> lists;
@@ -29,9 +32,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
         holder.ivRowMainImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                MainActivity.changeFragment(new EdutourDetailFragment());
             }
         });
+
+        Picasso.get().load(lists.get(position).urlImage).fit().into(holder.ivRowMainImage);
     }
 
     @Override

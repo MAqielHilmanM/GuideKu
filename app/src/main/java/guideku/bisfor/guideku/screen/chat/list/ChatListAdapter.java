@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import guideku.bisfor.guideku.R;
@@ -29,12 +31,22 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ChatListViewHolder holder, int position) {
-        holder.layoutRowChatList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ChatDetailActivity.startActivity(context,"","");
-            }
-        });
+        if(lists.get(position) != null){
+            holder.tvRowChatListTitle.setText(lists.get(position).name);
+            holder.tvRowChatListLast.setText(lists.get(position).lastText);
+            holder.tvRowChatListCount.setText(String.valueOf(lists.get(position).count));
+            holder.tvRowChatListTime.setText(lists.get(position).time);
+            holder.layoutRowChatList.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ChatDetailActivity.startActivity(context,"","");
+                }
+            });
+
+            if(lists.get(position).urlImage != null && !lists.get(position).urlImage.equals(""))
+                Picasso.get().load(lists.get(position).urlImage).fit().into(holder.civRowChatListImage);
+        }
+
     }
 
     @Override

@@ -1,9 +1,14 @@
 package guideku.bisfor.guideku.screen.register;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,13 +18,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 import guideku.bisfor.guideku.R;
+import guideku.bisfor.guideku.api.BaseFirebase;
+import guideku.bisfor.guideku.api.model.UserModel;
 import guideku.bisfor.guideku.screen.main.MainActivity;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -27,9 +42,13 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     TextView tvRegisterLogin;
     Context context;
+    private Location mLocation;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private FirebaseFirestore mFirestore;
 
     private FirebaseAuth mAuth;
     public static final String TAG = "REGISTERACT";
+    public static final int REQUEST_CODE_LOCATION = 99;
 
 
     @Override
@@ -40,6 +59,26 @@ public class RegisterActivity extends AppCompatActivity {
         initObject();
         initDummy();
         initAction();
+        getLastKnowLocation();
+    }
+
+    private void getLastKnowLocation() {
+        if (checkPermission())
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                mLocation = location;
+                            }
+                        }
+                    });
+    }
+
+    private boolean checkPermission() {
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED;
     }
 
     private void initObject() {
@@ -51,6 +90,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         tvRegisterLogin = findViewById(R.id.tvRegisterLogin);
         mAuth = FirebaseAuth.getInstance();
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mLocation = new Location("");
+        mFirestore = FirebaseFirestore.getInstance();
         context = this;
     }
 
@@ -75,7 +117,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        MainActivity.startActivity(context,user.getUid());
+                                        sendRegister(user.getUid());
+                                        MainActivity.startActivity(context, user.getUid(),user.getDisplayName());
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -132,5 +175,69 @@ public class RegisterActivity extends AppCompatActivity {
 
         return true;
 
+    }
+
+    private void sendRegister(String uId) {
+        UserModel userModel = new UserModel(
+                new Date(),
+                etRegisterEmail.getText().toString(),
+                "-",
+                0,
+                new GeoPoint(mLocation.getLatitude(), mLocation.getLongitude()),
+                0,
+                etRegisterFName.getText().toString() + " " + etRegisterLName.getText().toString(),
+                "",
+                0,
+                new ArrayList<String>(),
+                "",
+                etRegisterUsername.getText().toString());
+        mFirestore.collection(BaseFirebase.KEY_USER).document(uId).set(userModel);
+    }
+
+    private void requestPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        REQUEST_CODE_LOCATION);
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    getLastKnowLocation();
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
     }
 }

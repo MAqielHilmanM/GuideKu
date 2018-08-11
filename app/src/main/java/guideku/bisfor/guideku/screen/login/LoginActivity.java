@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        MainActivity.startActivity(context,user.getUid());
+                                        MainActivity.startActivity(context,user.getUid(),user.getDisplayName());
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null)
-            MainActivity.startActivity(this, currentUser.getUid());
+            MainActivity.startActivity(this, currentUser.getUid(),currentUser.getDisplayName());
     }
 
     @Override
@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            MainActivity.startActivity(context,user.getUid());
+                            MainActivity.startActivity(context,user.getUid(),user.getDisplayName());
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithGoogle:failure", task.getException());
