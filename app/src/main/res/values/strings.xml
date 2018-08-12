@@ -29,5 +29,6 @@
     <string name="googleWebAuthClientId">
         480474110517-mb3tg4g98o0jmqjama7ir1depjq26hg8.apps.googleusercontent.com
     </string>
+    <string name="title_activity_exploring">Exploring</string>
 
 </resources>

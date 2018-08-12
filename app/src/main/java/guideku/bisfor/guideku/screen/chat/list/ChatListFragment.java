@@ -24,6 +24,7 @@ import guideku.bisfor.guideku.api.BaseFirebase;
 import guideku.bisfor.guideku.api.model.ChatModel;
 import guideku.bisfor.guideku.api.model.UserModel;
 import guideku.bisfor.guideku.screen.main.MainActivity;
+import guideku.bisfor.guideku.utils.Tools;
 
 public class ChatListFragment extends Fragment {
     Context context;
@@ -78,7 +79,7 @@ public class ChatListFragment extends Fragment {
         rvChatList = v.findViewById(R.id.rvChatList);
         layoutChatEmpty = v.findViewById(R.id.layoutChatEmpty);
         lists = new ArrayList<>();
-        adapter = new ChatListAdapter(lists);
+        adapter = new ChatListAdapter(lists,uId);
         layoutManager = new LinearLayoutManager(getContext());
         context = getContext();
         rvChatList.setAdapter(adapter);
@@ -93,27 +94,32 @@ public class ChatListFragment extends Fragment {
         firebaseFirestore.collection(BaseFirebase.KEY_CHAT).whereEqualTo(BaseFirebase.KEY_CHAT_USER, uId).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<ChatModel> models = queryDocumentSnapshots.toObjects(ChatModel.class);
-                for (ChatModel item: models
-                     ) {
-                    callUser(item);
+                lists.clear();
+                for (DocumentSnapshot item : queryDocumentSnapshots
+                        ) {
+                    ChatModel model = item.toObject(ChatModel.class);
+                    callUser(model, item.getId());
                 }
+                adapter.notifyDataSetChanged();
             }
         });
 
 
     }
 
-    private void callUser(ChatModel model) {
+    private void callUser(final ChatModel model, final String Id) {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         DocumentReference documentReference = firebaseFirestore.collection(BaseFirebase.KEY_USER).document(model.getGuide());
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 UserModel userModel = documentSnapshot.toObject(UserModel.class);
-
+                lists.add(new ChatListDao(Id, userModel.getName(), model.getUserUnread(), model.getLastMessage(), Tools.dateTimeToTimeFormat(model.getLastModified()), userModel.getUrlImage()));
+                adapter.notifyDataSetChanged();
             }
         });
     }
+
+
 
 }

@@ -187,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity {
                 0,
                 etRegisterFName.getText().toString() + " " + etRegisterLName.getText().toString(),
                 "",
-                0,
+                0.0,
                 new ArrayList<String>(),
                 "",
                 etRegisterUsername.getText().toString());

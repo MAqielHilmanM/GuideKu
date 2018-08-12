@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import guideku.bisfor.guideku.R;
@@ -42,7 +44,8 @@ public class ChatDetailAdapter extends RecyclerView.Adapter<ChatDetailViewHolder
             holder.tvRowChatDetailText.setBackgroundColor(Color.parseColor("#3BB2BF"));
         }
 
-
+        if(list.get(position).urlPic != null && !list.get(position).urlPic.equals(""))
+            Picasso.get().load(list.get(position).urlPic).fit().into(holder.civRowChatDetail);
     }
 
     @Override

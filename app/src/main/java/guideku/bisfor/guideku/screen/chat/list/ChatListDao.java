@@ -3,12 +3,12 @@ package guideku.bisfor.guideku.screen.chat.list;
 public class ChatListDao {
     public String id;
     public String name;
-    public double count;
+    public long count;
     public String lastText;
     public String time;
     public String urlImage;
 
-    public ChatListDao(String id, String name, Double count, String lastText, String time, String urlImage) {
+    public ChatListDao(String id, String name, long count, String lastText, String time, String urlImage) {
         this.id = id;
         this.name = name;
         this.count = count;
@@ -42,11 +42,11 @@ public class ChatListDao {
         this.name = name;
     }
 
-    public double getCount() {
+    public long getCount() {
         return count;
     }
 
-    public void setCount(double count) {
+    public void setCount(long count) {
         this.count = count;
     }
 

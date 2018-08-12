@@ -17,9 +17,11 @@ import guideku.bisfor.guideku.screen.chat.detail.ChatDetailActivity;
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolder> {
     List<ChatListDao> lists;
     Context context;
+    String userId;
 
-    public ChatListAdapter(List<ChatListDao> lists) {
+    public ChatListAdapter(List<ChatListDao> lists,String userId) {
         this.lists = lists;
+        this.userId = userId;
     }
 
     @NonNull
@@ -30,7 +32,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChatListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChatListViewHolder holder, final int position) {
         if(lists.get(position) != null){
             holder.tvRowChatListTitle.setText(lists.get(position).name);
             holder.tvRowChatListLast.setText(lists.get(position).lastText);
@@ -39,7 +41,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListViewHolder> {
             holder.layoutRowChatList.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ChatDetailActivity.startActivity(context,"","");
+                    ChatDetailActivity.startActivity(context,lists.get(position).id,lists.get(position).name,lists.get(position).urlImage,userId);
                 }
             });
 

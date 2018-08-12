@@ -16,7 +16,7 @@ public class UserModel {
     private long love;
     private String name;
     private String phoneNumber;
-    private long rating;
+    private Double rating;
     private List<String> service;
     private String urlImage;
     private String username;
@@ -24,7 +24,7 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(Date birthDate, String email, String gender, long level, GeoPoint location, long love, String name, String phoneNumber, long rating, List<String> service, String urlImage,String username) {
+    public UserModel(Date birthDate, String email, String gender, long level, GeoPoint location, long love, String name, String phoneNumber, Double rating, List<String> service, String urlImage,String username) {
         this.birthDate = birthDate;
         this.email = email;
         this.gender = gender;
@@ -71,7 +71,7 @@ public class UserModel {
         return phoneNumber;
     }
 
-    public long getRating() {
+    public Double getRating() {
         return rating;
     }
 
